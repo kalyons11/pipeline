@@ -10,3 +10,6 @@ test:
 deploy:
 	pip install pipreqs
 	pipreqs . --force
+
+start:
+	python app.py
