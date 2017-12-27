@@ -8,4 +8,4 @@ COPY buzz /src/buzz
 # Setup env vars
 ENV FOO BAR
 
-CMD python /src/run.py
+CMD python -m nose -v --nocapture --with-doctest src/buzz

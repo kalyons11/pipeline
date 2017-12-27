@@ -4,12 +4,14 @@ install:
 	pip install -r requirements.txt
 	pip install . --upgrade
 
-test:
-	nosetests buzz/ -v --nocapture --with-doctest
-
 deploy:
 	pip install pipreqs
 	pipreqs . --force
 
+test:
+	docker build . -f Dockerfile.test -t pipeline-test
+	docker run -p 5000:5000 --rm -it pipeline-test
+
 start:
-	python app.py
+	docker build . -t pipeline
+	docker run -p 5000:5000 --rm -it pipeline
